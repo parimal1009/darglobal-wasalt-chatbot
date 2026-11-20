@@ -19,7 +19,9 @@ export default function App() {
   const [busy, setBusy] = useState(false);
   const endRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => endRef.current?.scrollIntoView({ behavior: "smooth" }), [messages]);
+  useEffect(() => {
+    endRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
   async function send(text: string) {
     const q = text.trim();

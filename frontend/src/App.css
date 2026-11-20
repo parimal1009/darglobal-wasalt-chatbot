@@ -18,6 +18,10 @@ main { flex: 1; overflow-y: auto; padding: 12px 0; display: flex; flex-direction
 .bubble th, .bubble td { border: 1px solid #e3dbcf; padding: 4px 8px; text-align: left; }
 .user .bubble { background: #5a3d1e; color: #fff; }
 .assistant .bubble { background: #fff; border: 1px solid #e3dbcf; }
+.assistant .bubble { white-space: normal; overflow-x: auto; }
+.assistant .bubble p { margin: 0 0 8px; }
+.assistant .bubble table { border-collapse: collapse; font-size: 0.85rem; }
+.assistant .bubble th, .assistant .bubble td { border: 1px solid #e3dbcf; padding: 4px 8px; }
 .error .bubble { border-color: #c0392b; color: #c0392b; }
 .sources { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
 .sources a { font-size: 0.75rem; background: #ebe3d6; padding: 3px 8px; border-radius: 999px; color: #5a3d1e; text-decoration: none; }
