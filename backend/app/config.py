@@ -14,6 +14,7 @@ class Settings(BaseSettings):
     llm_model: str = "openai/gpt-oss-120b"
     llm_api_key: str = ""
     top_k: int = 6
+    cors_origins: str = ""
 
 
 settings = Settings()

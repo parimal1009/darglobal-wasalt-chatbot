@@ -6,6 +6,8 @@ import "./App.css";
 type Source = { title: string; url: string; source: string };
 type Msg = { role: "user" | "assistant"; content: string; sources?: Source[]; error?: boolean };
 
+const API = (import.meta.env.VITE_API_URL ?? "").replace(/\/$/, "");
+
 const SUGGESTIONS = [
   "What is Dar Global and what does it do?",
   "Which DarGlobal projects are in Dubai or Oman?",
@@ -33,7 +35,7 @@ export default function App() {
     const patch = (fn: (m: Msg) => Msg) =>
       setMessages((all) => all.map((m, i) => (i === all.length - 1 ? fn(m) : m)));
     try {
-      const res = await fetch("/api/chat", {
+      const res = await fetch(`${API}/api/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: q, history }),

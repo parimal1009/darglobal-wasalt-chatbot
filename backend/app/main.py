@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
@@ -12,6 +13,15 @@ from .config import ROOT, settings
 from .db import get_engine, init_db
 
 app = FastAPI(title="DarGlobal & Wasalt Chatbot")
+
+_origins = [o.strip().rstrip("/") for o in settings.cors_origins.split(",") if o.strip()]
+if _origins:
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=_origins,
+        allow_methods=["GET", "POST", "OPTIONS"],
+        allow_headers=["*"],
+    )
 
 
 class Message(BaseModel):
